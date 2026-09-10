@@ -1,0 +1,10 @@
+:root { font-family: Georgia, serif; color: #26382c; background: #f5f4ed; }
+body { margin: 0; }
+main { max-width: 760px; margin: auto; padding: 48px 24px; }
+header { border-bottom: 2px solid #73856b; padding-bottom: 24px; }
+h1 { font-size: 48px; margin: 12px 0; }
+h2 { font-size: 25px; }
+p, li { line-height: 1.65; }
+a { color: inherit; text-underline-offset: 5px; }
+article { padding: 16px 0 24px; border-bottom: 1px solid #c7cebf; }
+footer { margin-top: 32px; font-size: 14px; }
