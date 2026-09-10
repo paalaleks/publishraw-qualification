@@ -1,0 +1,37 @@
+name: Approve qualification publication PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Exact qualification pull request number
+        required: true
+        type: string
+      expected_head_sha:
+        description: Exact prepared fork head commit
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify identity and approve exact fork head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          EXPECTED_HEAD_SHA: ${{ inputs.expected_head_sha }}
+        run: |
+          set -euo pipefail
+          pull="$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json state,isCrossRepository,headRefOid)"
+          test "$(jq -r .state <<<"$pull")" = "OPEN"
+          test "$(jq -r .isCrossRepository <<<"$pull")" = "true"
+          test "$(jq -r .headRefOid <<<"$pull")" = "$EXPECTED_HEAD_SHA"
+          gh pr review "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --approve \
+            --body "Approved by the qualification bot after verifying the exact cross-repository head commit."
