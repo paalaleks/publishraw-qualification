@@ -1,0 +1,40 @@
+{
+  "formatVersion": 1,
+  "cases": {
+    "invented-fact": {
+      "supplied": [
+        "The walk followed the birch path.",
+        "We paused beside the stream."
+      ],
+      "mustNotAdd": [
+        "Oslo",
+        "September 10",
+        "three kilometres"
+      ]
+    },
+    "verbatim-quote": {
+      "supplied": "Keep this exactly: The north gate stays open.",
+      "expected": "The north gate stays open."
+    },
+    "new-taxonomy": {
+      "proposal": "woodland-notes",
+      "supportedField": null,
+      "expectedSummary": "Proposed taxonomy 'woodland-notes' is not added to the draft because this collection has no category or tag field."
+    },
+    "required-fact": {
+      "missing": [
+        "title",
+        "order"
+      ],
+      "provided": {
+        "title": "Notes from the birch path",
+        "order": 3
+      }
+    },
+    "file-edited-between-turns": {
+      "externalEdit": "A reader added this observation between turns.",
+      "requestedRevision": "Add the supplied note about damp leaves.",
+      "expectedPreserved": "A reader added this observation between turns."
+    }
+  }
+}

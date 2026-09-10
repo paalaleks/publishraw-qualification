@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "explicitApproval": "I approve this exact presented draft and intent for publication.",
+  "presented": "\ufeff---\r\ntitle: \"Notes from the birch path\"\r\norder: 3\r\n---\r\n\r\n> \"Keep this exactly.\"\r\n\r\nA supplied observation.\r\n",
+  "normalizedEquivalent": "---\ntitle: \"Notes from the birch path\"\norder: 3\n---\n\n> \"Keep this exactly.\"\n\nA supplied observation.\n",
+  "meaningfulChanges": [
+    {
+      "id": "trailing-space",
+      "text": "---\ntitle: \"Notes from the birch path\" \norder: 3\n---\n\n> \"Keep this exactly.\"\n\nA supplied observation.\n"
+    },
+    {
+      "id": "code-whitespace",
+      "text": "---\ntitle: \"Notes from the birch path\"\norder: 3\n---\n\n> \"Keep this exactly.\"\n\n    A supplied observation.\n"
+    },
+    {
+      "id": "yaml-order-and-comment",
+      "text": "---\norder: 3\ntitle: \"Notes from the birch path\" # reviewed\n---\n\n> \"Keep this exactly.\"\n\nA supplied observation.\n"
+    },
+    {
+      "id": "final-newline",
+      "text": "---\ntitle: \"Notes from the birch path\"\norder: 3\n---\n\n> \"Keep this exactly.\"\n\nA supplied observation."
+    }
+  ]
+}
