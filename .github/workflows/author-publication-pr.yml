@@ -1,0 +1,51 @@
+name: Author qualification publication PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: Exact protected publication base branch
+        required: true
+        type: string
+      head_branch:
+        description: Exact prepared publication head branch
+        required: true
+        type: string
+      title:
+        description: Pull request title
+        required: true
+        type: string
+      body:
+        description: Pull request body
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create exactly one open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ inputs.base_branch }}
+          HEAD_BRANCH: ${{ inputs.head_branch }}
+          PR_TITLE: ${{ inputs.title }}
+          PR_BODY: ${{ inputs.body }}
+        run: |
+          set -euo pipefail
+          matches="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --base "$BASE_BRANCH" --head "$HEAD_BRANCH" --json number,state,url)"
+          if [ "$(jq 'length' <<<"$matches")" -ne 0 ]; then
+            echo "A PR already exists for this exact head/base; refusing to create a duplicate."
+            jq . <<<"$matches"
+            exit 1
+          fi
+          gh pr create \
+            --repo "$GITHUB_REPOSITORY" \
+            --base "$BASE_BRANCH" \
+            --head "$HEAD_BRANCH" \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY"
