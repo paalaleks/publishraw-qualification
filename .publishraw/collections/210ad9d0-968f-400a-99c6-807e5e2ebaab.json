@@ -1,0 +1,138 @@
+{
+  "id": "210ad9d0-968f-400a-99c6-807e5e2ebaab",
+  "formatVersion": 1,
+  "source": {
+    "siteRoot": ".",
+    "include": [
+      "content/notes/*.md"
+    ],
+    "exclude": [
+      ".publishraw/**"
+    ],
+    "format": "markdown-yaml-v1",
+    "parserId": "yaml+marked",
+    "parserVersion": "2.9.0+18.0.12"
+  },
+  "schema": {
+    "validatorPath": ".publishraw/runtime/react-vite/0.0.1/validate.mjs",
+    "fields": [
+      {
+        "path": "/title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "path": "/order",
+        "type": "integer",
+        "required": true
+      }
+    ]
+  },
+  "identity": {
+    "strategy": "file-path",
+    "caseSensitivity": "sensitive",
+    "filenameRule": "vite-routerless:markdown-stem",
+    "urlRule": "vite-routerless:fragment"
+  },
+  "semantics": {
+    "title": "/title",
+    "body": "markdown:body"
+  },
+  "rendering": {
+    "adapterId": "react-vite",
+    "adapterVersion": "0.0.1",
+    "sources": [
+      "src/main.jsx"
+    ],
+    "listRoutes": [
+      "/"
+    ],
+    "consumers": [
+      "FieldNotes"
+    ],
+    "buildHook": "npm run build",
+    "devHook": "npm run dev",
+    "generatedOutputRoot": "src/generated"
+  },
+  "layouts": {
+    "default": "note",
+    "variants": [
+      {
+        "id": "note",
+        "inputs": [
+          "title",
+          "body"
+        ],
+        "placements": [
+          "body"
+        ],
+        "renderer": "FieldNotes",
+        "crop": "none"
+      }
+    ],
+    "hints": [],
+    "responsive": "Existing src/style.css"
+  },
+  "checks": [
+    {
+      "id": "build",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "timeoutSeconds": 1800,
+      "required": true,
+      "evidenceKind": "build"
+    }
+  ],
+  "observedSources": [
+    {
+      "path": "content/notes/garden.md",
+      "sha256": "1d0bcd3aa60ee046fc6ef95e48f6e0abe4ea30f789431b72851c5326f4794c84",
+      "role": "content"
+    },
+    {
+      "path": "content/notes/walk.md",
+      "sha256": "c4fbaecfd1fb7916ba18094f407c2e8c987b5d2b02aa990a4e2c3b42824cf477",
+      "role": "content"
+    },
+    {
+      "path": "index.html",
+      "sha256": "8cc7ea985732bb7eb56604d40e7e4ab8557d0bafbbe496cd5858718529fa30c0",
+      "role": "integration"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8c3a25c5c2c48bf9a60d1d4dab81cb7f97eb9bfef2e0552af53f7a5e1c01a55d",
+      "role": "integration"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e7e17366875b45378dcb776cb06c14bd95684bdc71b74304b30415baac3d649e",
+      "role": "integration"
+    },
+    {
+      "path": "scripts/content.mjs",
+      "sha256": "05a27b82824877d7a47f3f27fa287513b310384502ea2433ea791f542e147a01",
+      "role": "integration"
+    },
+    {
+      "path": "src/main.jsx",
+      "sha256": "5a8130f3fd5243191d16a938c266db3d63dfbadcac9bc7f88f2d33664ab9a3f3",
+      "role": "integration"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "8c779da94fd885ad2e763cd3b8b756d85727497f5deeef1fcab1507396afdcb1",
+      "role": "integration"
+    },
+    {
+      "path": "vite.config.mjs",
+      "sha256": "4c176a81060f72365d86a18a1f399fb37a00a80fb68dc8ffe38e60c5f2fa7cf3",
+      "role": "integration"
+    }
+  ],
+  "status": "available"
+}
