@@ -23,7 +23,7 @@
   "publishing": {
     "repositoryId": "1364511017",
     "branch": "qualification/ticket15-ticket16-install-base",
-    "workflow": "direct",
+    "workflow": "pull-request",
     "evidence": {
       "source": "authorized current origin and GitHub repository metadata",
       "observedAt": "2026-09-10T16:08:29.498Z"
