@@ -1,0 +1,38 @@
+{
+  "formatVersion": 1,
+  "installationId": "a97154d0-81a7-4d64-81e6-b998a59015d8",
+  "package": {
+    "version": "0.0.1",
+    "manifestUrl": "https://example.test/releases/0.0.1/manifest.json",
+    "manifestSha256": "80ab6127748e9b6077d107e72912bbc14c41401469998bd08dad72c0bd828dac",
+    "helperVersion": "0.0.1",
+    "helperEntry": "helper.mjs"
+  },
+  "repository": {
+    "host": "github.com",
+    "id": "1364511017",
+    "owner": "paalaleks",
+    "name": "publishraw-qualification"
+  },
+  "site": {
+    "root": "site",
+    "compatibilityProfileId": "vite-routerless",
+    "lockfilePath": "site/package-lock.json",
+    "lockfileSha256": "8c3a25c5c2c48bf9a60d1d4dab81cb7f97eb9bfef2e0552af53f7a5e1c01a55d"
+  },
+  "publishing": {
+    "repositoryId": "1364511017",
+    "branch": "qualification/ticket19-protected-20260910",
+    "workflow": "pull-request",
+    "evidence": {
+      "source": "Ticket 19 exact qualification target",
+      "observedAt": "2026-09-10T20:18:45.525Z"
+    }
+  },
+  "collections": [
+    "becc746e-4a24-4e54-a346-7fba3cf08767"
+  ],
+  "media": null,
+  "installedAt": "2026-09-10T20:18:45.614Z",
+  "updatedAt": "2026-09-10T20:18:45.614Z"
+}
