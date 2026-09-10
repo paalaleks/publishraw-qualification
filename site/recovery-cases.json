@@ -1,0 +1,47 @@
+{
+  "formatVersion": 1,
+  "lockCases": [
+    { "id": "fresh", "heartbeatAgeMs": 1000, "process": "missing", "expected": "MUTATION_LOCKED" },
+    { "id": "stale-live", "heartbeatAgeMs": 31000, "process": "same", "expected": "MUTATION_LOCKED" },
+    { "id": "stale-unknown", "heartbeatAgeMs": 31000, "process": "unknown", "expected": "MUTATION_LOCK_UNVERIFIED" },
+    { "id": "stale-gone", "heartbeatAgeMs": 31000, "process": "missing", "expected": "acquired" },
+    { "id": "pid-reused", "heartbeatAgeMs": 31000, "process": "different", "expected": "acquired" },
+    { "id": "token-mismatch", "heartbeatAgeMs": 31000, "process": "missing", "expected": "MUTATION_LOCK_UNVERIFIED", "ownerTokenMismatch": true }
+  ],
+  "draftCases": [
+    { "id": "matching-unapproved", "expected": "restored-awaiting-approval" },
+    { "id": "matching-approved", "expected": "restored-approved-evidence-retained" },
+    { "id": "matching-sidecar-only", "expected": "restored-awaiting-approval" },
+    { "id": "matching-stale-intent", "expected": "restored-awaiting-approval" },
+    { "id": "concurrent-replacement", "expected": "RECOVERY_CONFLICT-and-user-bytes-preserved" },
+    { "id": "pre-approval-copy", "expected": "MISSING_DRAFT_NEW_DIRECTION" },
+    { "id": "missing-copy", "expected": "MISSING_DRAFT_NEW_DIRECTION" }
+  ],
+  "discardCases": [
+    { "id": "clean", "expected": "local-artifacts-removed" },
+    { "id": "public-asset", "expected": "durable-receipt" },
+    { "id": "open-pr", "expected": "OUTCOME_UNVERIFIED" },
+    { "id": "published", "expected": "durable-receipt" },
+    { "id": "publishing", "expected": "OUTCOME_UNVERIFIED" },
+    { "id": "outcome-unverified", "expected": "OUTCOME_UNVERIFIED" }
+  ],
+  "mutationCases": [
+    { "id": "abort-before-write", "expected": "source-unchanged" },
+    { "id": "cancel-after-first-write", "expected": "MUTATION_INTERRUPTED-with-recovery" },
+    { "id": "crash-after-first-write", "expected": "matching-byte-restored" },
+    { "id": "overlapping-edit-after-crash", "expected": "RECOVERY_CONFLICT-and-user-bytes-preserved" }
+  ],
+  "draftSaveCases": [
+    { "id": "cancel-after-operation-write", "expected": "MUTATION_INTERRUPTED-then-recovered" },
+    { "id": "crash-after-guarded-move", "expected": "missing-canonical-restored" },
+    { "id": "changed-displaced-inode", "expected": "RECOVERY_CONFLICT-and-open-handle-bytes-preserved" },
+    { "id": "retained-after-discard", "expected": "retained-recovery-reported" },
+    { "id": "racing-draft-edit", "expected": "RECOVERY_CONFLICT-and-user-bytes-preserved" }
+  ],
+  "upgradeCases": [
+    { "id": "settled-local", "phase": "blocked", "expected": "ready" },
+    { "id": "retained-install", "type": "install", "expected": "ready" },
+    { "id": "publishing", "phase": "publishing", "expected": "OPERATION_RECONCILIATION_REQUIRED" },
+    { "id": "outcome-unverified", "phase": "outcome-unverified", "expected": "OPERATION_RECONCILIATION_REQUIRED" }
+  ]
+}
