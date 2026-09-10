@@ -1,5 +1,5 @@
 ---
-title: Retry after proven absence
+title: Later external edit
 ---
 
-Approved retry content.
+Changed after verified publication.
